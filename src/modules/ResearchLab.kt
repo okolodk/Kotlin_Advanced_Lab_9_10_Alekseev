@@ -1,4 +1,5 @@
 package modules
+import  resources.ResourceManager
 
 class ResearchLab : OutpostModule("Иследовательская лаборатория") {
     override fun performAction(manager: ResourceManager) {
