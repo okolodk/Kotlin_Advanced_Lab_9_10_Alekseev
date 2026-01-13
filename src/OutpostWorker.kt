@@ -26,21 +26,21 @@ class OutpostWorker(val name: String) {
         println("$name levelUp: $level | maxEnergy увиличена до: $maxEnergy")
     }
 }
-fun main() {
-    val worker = OutpostWorker("Aleksee")
-    println("Энергия: ${worker.energy}")
-    println("Настроение: ${worker.mood}")
-
-    worker.work()
-    worker.work()
-    worker.work()
-
-    println("Энергия: ${worker.energy}")
-    println("Настроение: ${worker.mood}")
-    worker.rest()
-
-    worker.energy = 150
-//    worker.level = 5
-    worker.levelUp()
-
-}
+//fun main() {
+//    val worker = OutpostWorker("Aleksee")
+//    println("Энергия: ${worker.energy}")
+//    println("Настроение: ${worker.mood}")
+//
+//    worker.work()
+//    worker.work()
+//    worker.work()
+//
+//    println("Энергия: ${worker.energy}")
+//    println("Настроение: ${worker.mood}")
+//    worker.rest()
+//
+//    worker.energy = 150
+////    worker.level = 5
+//    worker.levelUp()
+//
+//}
