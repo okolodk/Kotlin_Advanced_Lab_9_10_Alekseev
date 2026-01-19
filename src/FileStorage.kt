@@ -21,7 +21,7 @@ object FileStorage{
 
         println("Загрузка состояния базы из файла")
     return file.readLines().map {
-        val (id, name, amount) = it.split(";")
+        val (id, name, amount) = it.split("|")
         OutpostResource(id.toInt(), name, amount.toInt())
     }
 

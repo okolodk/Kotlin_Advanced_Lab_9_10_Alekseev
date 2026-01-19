@@ -1,0 +1,2 @@
+minerals     | 150
+gas          | 30
