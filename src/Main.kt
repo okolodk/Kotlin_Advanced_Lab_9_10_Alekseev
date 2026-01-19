@@ -18,7 +18,18 @@ fun handleModuleResult(result: ModuleResult) {
             println("ОШИБКА: ${result.reason}")
     }
 }
+object  SystemLogger {
+    init {
+        println("SystemLogger инициализирован")
+    }
+    fun log(message: String) {
+        println("[LOG] $message")
+    }
+
+}
 fun main() {
+    val logger by lazy { SystemLogger }
+    logger.log("Запуск базы")
 //    val manager = resources.ResourceManager()
 //    val minerrals = resources.OutpostResource(1, "Minerals", 300)
 //    val gas  = resources.OutpostResource(2, "Gas", 100)
@@ -47,4 +58,15 @@ fun main() {
 
     println()
     manager.printAll()
+    // Загрузка состояния
+    val loadedResources = FileStorage.load()
+    loadedResources.forEach { manager.add(it) }
+
+
+    if (loadedResources.isEmpty()) {
+        manager.add(OutpostResource(id = 1, name = "Minerals", 300))
+        manager.add(OutpostResource(id = 2, name = "Gas", 100))
+
+    }
+    FileStorage.save(manager.getAll())
 }

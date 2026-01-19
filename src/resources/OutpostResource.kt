@@ -1,19 +1,24 @@
 package resources
+import kotlin.properties.Delegates
 
 data class OutpostResource(
     val id: Int,
     val name: String,
-    var amount: Int
+    var amountInit: Int
 ) {
+    var amount: Int by Delegates.observable(amountInit) {
+        _, old, new ->
+        println("Ресурс [$name] изменения: $old -> $new")
+    }
     override fun toString(): String {
         return "Ваш ресурс: $id | Имя: $name | Количество: $amount"
     }
 }
 fun main() {
-    val gas = OutpostResource(id = 1, name = "Gas", amount = 100)
-    val mineral = OutpostResource(id = 2, name = "Minerals", amount = 250)
+    val gas = OutpostResource(id = 1, name = "Gas", 100)
+    val mineral = OutpostResource(id = 2, name = "Minerals", 250)
     println("Успех! Вы добыли дополнительное количество минералов: ${mineral.amount + 50}")
-    val bonusMineral = mineral.copy(id = 3, name = "Minerals Bonus", amount = mineral.amount + 50)
+    val bonusMineral = mineral.copy(id = 3, name = "Minerals Bonus", amountInit = mineral.amount + 50)
     println(gas.toString())
     println(mineral.toString())
     println(bonusMineral.toString())
